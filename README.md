@@ -32,17 +32,17 @@
 * x_names <- read.table("features.txt",head=FALSE)
 * names(x)<- x_names$V2
 
-# SELECT THE VARIABLES IN FEATURES
+## SELECT THE VARIABLES IN FEATURES
 -The first comand will list all the observaion in x_name list and return which one the word mean or sd (standard deviation) appears
 -The second comand will subset the original dataframe only in the columns where those words appears
 * selected <-x_names$V2[grep("mean\\(\\)|std\\(\\)", x_names$V2)]
 * data1<-x[,c(as.character(selected))]
 
-# MERGE THE FEATURE, SUBJECT AND ACTIVITY FILES
+## MERGE THE FEATURE, SUBJECT AND ACTIVITY FILES
 -The comand below will marge the 3 file to have just one big file with informations about the subject, the activity and the feature
 * data2 <- cbind(data1, subject, y)
 
-# GIVE THE LABELS TO ACTIVITY
+## GIVE THE LABELS TO ACTIVITY
 -The comand below read a table with the describe of activity numbers, and the it will merge the first file with the describe activity file
 -Based on activity number it will possible to joint the two files
 * descriptive_activity_names<- read.table("activity_labels.txt",head=FALSE)
@@ -61,7 +61,7 @@
 * names(data3)<-gsub("Mag", "Magnitude", names(data3))
 * names(data3)<-gsub("BodyBody", "Body", names(data3))
 
-# CREATE A TIDY DATA WITH AVERAGE OF VARIABLES, ACTIVITY AND SUBJECTS
+## CREATE A TIDY DATA WITH AVERAGE OF VARIABLES, ACTIVITY AND SUBJECTS
 -The comands below will aggregate the dataframe based in subject and activity takinh the average of the feature variable
 -The last comand will save the tidy data file in a txt format in your working directory
 
